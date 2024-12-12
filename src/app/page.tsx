@@ -8,9 +8,9 @@ export default function Home() {
   const [entityType, setEntityType] = useState<'none' | 'person' | 'company'>('none');
 
   return (
-    <main className="min-h-screen h-[100dvh] bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 relative overflow-hidden flex flex-col">
-      {/* Animated logo background */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-5">
+    <main className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 relative">
+      {/* Animated logo background - Fixed position */}
+      <div className="fixed inset-0 flex items-center justify-center opacity-5 pointer-events-none">
         <div className="animate-spin-slow">
           <Image
             src="/Lockup - Blue.png"
@@ -22,8 +22,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Logo in corner */}
-      <div className="absolute top-6 right-6 sm:right-8">
+      {/* Logo in corner - Fixed position */}
+      <div className="fixed top-6 right-6 sm:right-8 z-10">
         <Image
           src="/Logomark - Blue.png"
           alt="Company Logomark"
@@ -33,16 +33,16 @@ export default function Home() {
         />
       </div>
 
-      {/* Main content */}
-      <div className="relative flex-1 flex flex-col h-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
-          <div className="text-center mb-4 mt-20">
+      {/* Main content - Scrollable */}
+      <div className="relative min-h-screen w-full py-4 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto w-full pt-20">
+          <div className="text-center mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight px-4">
               How much do you make from your rental property?
             </h1>
           </div>
 
-          <div className="flex-1 flex items-center justify-center px-4 sm:px-6">
+          <div className="flex justify-center px-4 sm:px-6 pb-8">
             {entityType === 'none' ? (
               <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 w-full max-w-lg">
                 <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-900">
@@ -67,7 +67,7 @@ export default function Home() {
               <div className="w-full">
                 <button
                   onClick={() => setEntityType('none')}
-                  className="mb-6 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-xl font-bold text-blue-600 hover:bg-white/90 transition-all shadow-lg flex items-center gap-2"
+                  className="mb-6 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-xl font-bold text-blue-600 hover:bg-white/90 transition-all shadow-lg flex items-center gap-2 sticky top-4 z-10"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
